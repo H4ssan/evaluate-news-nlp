@@ -8,16 +8,13 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 
 //app endpoint
-projectData = {};
+projectData = [];
 
 //set aylien api credentials
 const textapi = new aylien({
     application_id: process.env.API_ID,
     application_key: process.env.API_KEY
 });
-
-
-
 
 const app = express()
 
@@ -30,7 +27,7 @@ app.use(express.static('dist'))
 
 console.log(__dirname)
 
-app.get('/', function (req, res) {
+app.get('/apidata', function (req, res) {
     // res.sendFile('dist/index.html')
     res.sendFile(path.resolve('src/client/views/index.html'))
 })
@@ -40,17 +37,23 @@ app.listen(8080, function () {
     console.log('Example app listening on port 8080!')
 })
 
-app.get('/data', function (req, res) {
+app.post('/data', function (req, res) {
+    console.log("working");
 
-    let apiData = [];
-    const urlText = document.getElementById('name').value;
-
+    try{
+    const urlText = req.body;
     textapi.sentiment({
         text: urlText
     },
-        function (error, response) {
+        function (error, res) {
             if (error === null) {
-                console.log(response);
+                projectData.text = res.text;
+                res.send(projectData);
+                console.log(res);
+                console.log("worked")
             }
         })
+    } catch(error){
+        console.log("error", error)
+    }
 });
