@@ -51,13 +51,13 @@ app.post('/data', function (req, res) {
         text: urlText,
         mode: 'document'
     },
-    function (error, res) {
+    function (error, response) {
         if (error === null) {
-            projectData.text = res.text;
-            projectData.polarity = res.polarity;
-            projectData.subjectivity = res.subjectivity;
+            projectData.text = response.text;
+            projectData.polarity = response.polarity;
+            projectData.subjectivity = response.subjectivity;
             res.send(projectData);
-            console.log(res);
+            console.log(response);
             console.log("worked")
         }
     })

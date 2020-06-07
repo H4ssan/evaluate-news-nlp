@@ -1,14 +1,12 @@
 const validUrl = require('valid-url');
 
-function checkForName(formText) {
-    console.log("::: Running checkForName :::", formText);
-    if(validUrl.isUri(formText)){
+function checkForName(inputText) {
+    console.log("::: Running checkForName :::");
+    if(validUrl.isUri(inputText)){
         console.log("Valid URL!")
     }else{
         console.log("error");
     }
-
-    
 }
 
 export { checkForName }
