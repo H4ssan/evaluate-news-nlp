@@ -8,7 +8,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 
 //app endpoint
-projectData = [];
+projectData = {};
 
 //set aylien api credentials
 const textapi = new aylien({
@@ -28,9 +28,14 @@ app.use(express.static('dist'))
 console.log(__dirname)
 
 app.get('/', function (req, res) {
-    res.sendFile('dist/index.html')
-  //  res.sendFile(path.resolve('src/client/views/index.html'))
+   // res.sendFile('dist/index.html')
+  res.sendFile(path.resolve('src/client/views/index.html'))
 })
+
+app.get("/all", (req,res) =>{
+    console.log(projectData);
+    res.send(projectData);
+  })
 
 // designates what port the app will listen to for incoming requests
 app.listen(8080, function () {
@@ -46,14 +51,16 @@ app.post('/data', function (req, res) {
         text: urlText,
         mode: 'document'
     },
-        function (error, res) {
-            if (error === null) {
-                projectData.text = res.text;
-                res.send(projectData);
-                console.log(res);
-                console.log("worked")
-            }
-        })
+    function (error, res) {
+        if (error === null) {
+            projectData.text = res.text;
+            projectData.polarity = res.polarity;
+            projectData.subjectivity = res.subjectivity;
+            res.send(projectData);
+            console.log(res);
+            console.log("worked")
+        }
+    })
     } catch(error){
         console.log("error", error)
     }

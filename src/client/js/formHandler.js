@@ -6,14 +6,11 @@ async function handleSubmit(event) {
     let formText = document.getElementById('name').value
     Client.checkForName(formText)
     console.log("::: Form Submitted :::")
-
-    getData(url)
-
-        .then(function (data) {
-            postData('/data', { polarity: polarity, subjectivity: subjectivity })
-        })
-
-    updateInterface();
+    
+    postData(url,{formText})
+    .then(function () {
+        updateInterface();
+    })
 }
 //GET Request
 const getData = async (url) => {
@@ -50,7 +47,7 @@ const postData = async (url = '', data = {}) => {
 
 //update UI
 const updateInterface = async () => {
-    const request = await fetch('/data')
+    const request = await fetch('http://localhost:8080/all')
 
     try {
         const allData = await request.json()
