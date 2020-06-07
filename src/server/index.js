@@ -27,7 +27,7 @@ app.use(express.static('dist'))
 
 console.log(__dirname)
 
-app.get('/apidata', function (req, res) {
+app.get('/data', function (req, res) {
     // res.sendFile('dist/index.html')
     res.sendFile(path.resolve('src/client/views/index.html'))
 })
