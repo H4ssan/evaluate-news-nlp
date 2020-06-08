@@ -1,27 +1,17 @@
-const validUrl = require('valid-url');
 async function handleSubmit(event) {
-
     event.preventDefault()
     const url = 'http://localhost:8081/data'
 
     // check what text was put into the form field
     let formText = document.getElementById('name').value
-    console.log("::: Running checkForName :::");
-    
-    if (validUrl.isUri(formText)) {
-        console.log("Valid URL!")
-        console.log("::: Form Submitted :::")
-    } else {
-        alert("Please enter a valid URL!")
-        return;
-    }
+    console.log("::: Form Submitted :::")
+    Client.checkForName(formText)
 
-    postData(url, { formText })
-        .then(function () {
-            updateInterface();
-        })
+    postData(url,{formText})
+    .then(function () {
+        updateInterface();
+    })
 }
-
 //GET Request
 const getData = async (url) => {
     //set variable to hold fetch calls return
@@ -50,7 +40,7 @@ const postData = async (url = '', data = {}) => {
         const newData = await response.json();
         console.log(newData);
         return newData;
-    } catch (error) {
+    } catch(error) {
         console.log(error);
     }
 }
