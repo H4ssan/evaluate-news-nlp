@@ -1,17 +1,27 @@
+const validUrl = require('valid-url');
 async function handleSubmit(event) {
+
     event.preventDefault()
-    const url = 'http://localhost:8080/data'
+    const url = 'http://localhost:8081/data'
 
     // check what text was put into the form field
     let formText = document.getElementById('name').value
-    Client.checkForName(formText)
-    console.log("::: Form Submitted :::")
+    console.log("::: Running checkForName :::");
     
-    postData(url,{formText})
-    .then(function () {
-        updateInterface();
-    })
+    if (validUrl.isUri(formText)) {
+        console.log("Valid URL!")
+        console.log("::: Form Submitted :::")
+    } else {
+        alert("Please enter a valid URL!")
+        return;
+    }
+
+    postData(url, { formText })
+        .then(function () {
+            updateInterface();
+        })
 }
+
 //GET Request
 const getData = async (url) => {
     //set variable to hold fetch calls return
@@ -22,7 +32,7 @@ const getData = async (url) => {
         console.log(data);
         return data;
     } catch (error) {
-        console.log(error("error"));
+        console.log(error);
     }
 
 }
@@ -41,22 +51,21 @@ const postData = async (url = '', data = {}) => {
         console.log(newData);
         return newData;
     } catch (error) {
-        console.log(error("error"));
+        console.log(error);
     }
 }
 
 //update UI
 const updateInterface = async () => {
-    const request = await fetch('http://localhost:8080/all')
+    const request = await fetch('http://localhost:8081/all')
 
     try {
         const allData = await request.json()
         console.log(allData);
-        document.getElementById('results').innerHTML = "Results: ";
         document.getElementById('polarity').innerHTML = "Polarity: " + allData.polarity;
         document.getElementById('subjectivity').innerHTML = "Subjectivity: " + allData.subjectivity;
     } catch (error) {
-        console.log(error("error"));
+        console.log(error);
     }
 }
 
