@@ -13,20 +13,6 @@ async function handleSubmit(event) {
             })
     }
 }
-//GET Request
-const getData = async (url) => {
-    //set variable to hold fetch calls return
-    const res = await fetch(url)
-    try {
-        //retrieve data in json format
-        const data = await res.json();
-        console.log(data);
-        return data;
-    } catch (error) {
-        console.log(error);
-    }
-
-}
 
 const postData = async (url = '', data = {}) => {
     const response = await fetch(url, {
@@ -63,6 +49,6 @@ const updateInterface = async () => {
 export {
     handleSubmit,
     postData,
-    getData,
+   // getData,
     updateInterface
 }
