@@ -5,12 +5,13 @@ async function handleSubmit(event) {
     // check what text was put into the form field
     let formText = document.getElementById('name').value
     console.log("::: Form Submitted :::")
-    Client.checkForName(formText)
-
-    postData(url,{formText})
-    .then(function () {
-        updateInterface();
-    })
+    
+    if (Client.checkForName(formText)) {
+        postData(url, { formText })
+            .then(function () {
+                updateInterface();
+            })
+    }
 }
 //GET Request
 const getData = async (url) => {
@@ -40,7 +41,7 @@ const postData = async (url = '', data = {}) => {
         const newData = await response.json();
         console.log(newData);
         return newData;
-    } catch(error) {
+    } catch (error) {
         console.log(error);
     }
 }
