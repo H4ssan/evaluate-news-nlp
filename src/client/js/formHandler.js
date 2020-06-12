@@ -39,8 +39,12 @@ const updateInterface = async () => {
     try {
         const allData = await request.json()
         console.log(allData);
+        document.getElementById('results').innerHTML = "Results:-";
         document.getElementById('polarity').innerHTML = "Polarity: " + allData.polarity;
         document.getElementById('subjectivity').innerHTML = "Subjectivity: " + allData.subjectivity;
+        document.getElementById('polarityConfidence').innerHTML = "Polarity Confidence: " + allData.polarityConfidence;
+        document.getElementById('subConfidence').innerHTML = "Subjectivity Confidence: " + allData.subjectivityConfidence;
+
     } catch (error) {
         console.log(error);
     }
@@ -49,6 +53,5 @@ const updateInterface = async () => {
 export {
     handleSubmit,
     postData,
-   // getData,
     updateInterface
 }

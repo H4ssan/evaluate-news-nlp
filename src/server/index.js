@@ -56,6 +56,8 @@ app.post('/data', function (req, res) {
             projectData.text = response.text;
             projectData.polarity = response.polarity;
             projectData.subjectivity = response.subjectivity;
+            projectData.polarityConfidence = response.polarity_confidence;
+            projectData.subjectivityConfidence = response.subjectivity_confidence;
             res.send(projectData);
             console.log(response);
             console.log("worked")

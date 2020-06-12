@@ -10,7 +10,7 @@
 
     <header>
         <div class="">
-            Logo
+            Evaluate a news article with Natural Language Processing
         </div>
         <div class="">
             navigation
@@ -19,22 +19,26 @@
 
     <main>
         <section>
+            
             <form class="" onsubmit="return Client.handleSubmit(event)">
-                <input id="name" type="text" name="input" value="" placeholder="Name">
+                <h3>Enter a URL below to receive your evaluation!</h3> 
+                <input id="name" type="text" name="input" value="" placeholder="URL">
                 <input type="submit" name="" value="submit" onclick="return Client.handleSubmit(event)"
                     onsubmit="return Client.handleSubmit(event)">
             </form>
             <section>
 
-                <section>
-                    <strong>Results:</strong>
+                <section class="output">
+                    <div id="results"></div>
                     <div id="polarity"></div>
                     <div id="subjectivity"></div>
+                    <div id="polarityConfidence"></div>
+                    <div id="subConfidence"></div>
                 </section>
     </main>
 
     <footer>
-        <p>This is a footer</p>
+        <p>2020</p>
     </footer>
     <script>
         // Check that service workers are supported
