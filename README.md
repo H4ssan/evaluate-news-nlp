@@ -6,19 +6,16 @@ This is a web app which runs Natural Language Processing on articles of your cho
 Clone, fork or download this repo.
 
 # To run this app
-npm install
-
-npm run build-prod
-
-npm run start
-
-Then navigate to localhost:8081
+*npm install
+*npm run build-prod
+*npm run start
+*Then navigate to localhost:8081
 
 # Dependencies
-* HTML
-* CSS
-* Javascript
-* Sass
-* Babel
-* Express (Node.js framework)
-* Webpack
+*HTML
+*CSS
+*Javascript
+*Sass
+*Babel
+*Express (Node.js framework)
+*Webpack
