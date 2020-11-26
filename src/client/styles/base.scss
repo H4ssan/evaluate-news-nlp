@@ -6,12 +6,17 @@ body {
 
 main {
     flex: 2;
-    background-color: lightgrey;
+    background-image: url('../images/bg.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
 }
 
 .output{
     font-size: xx-large;
     font-weight: bold;
+    color: hsl(240, 6%, 50%);
 }
 section {
     max-width: 800px;

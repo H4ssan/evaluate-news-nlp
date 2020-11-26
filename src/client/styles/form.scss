@@ -2,11 +2,22 @@ form {
     border: 1px solid #545454;
     border-radius: 3px;
     padding: 40px;
+    color: whitesmoke;
 }
 
 input {
+    border-radius: 30px;
     padding: 5px 20px;
     width: 100%;
     line-height: 16px;
     margin: 10px 0;
 }
+
+#submitbtn{
+    background-color: #3b4a6b;
+    color: whitesmoke;
+    box-shadow: 2px 4px 5px #444;
+    cursor: pointer;
+}
+
+
