@@ -10,13 +10,14 @@ main {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-
 }
 
 .output{
     font-size: xx-large;
     font-weight: bold;
-    color: hsl(240, 6%, 50%);
+    color: black;
+    background-color: rgba(245, 245, 245, 0.8);
+    
 }
 section {
     max-width: 800px;

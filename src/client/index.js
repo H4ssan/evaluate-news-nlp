@@ -12,5 +12,5 @@ export {
     handleSubmit,
     checkForName,
     postData,
-    updateInterface
+    updateInterface,
 }
